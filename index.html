@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Burn Book - AI Search Edition</title>
+<title>The Burn Book - AEO Edition</title>
+<meta property="og:title" content="The Burn Book - AEO Edition">
+<meta property="og:description" content="Who's ACTUALLY getting cited by AI? ...and who's just getting mentioned">
+<meta property="og:image" content="https://burnbook-weld.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Burn Book - AEO Edition">
+<meta name="twitter:description" content="Who's ACTUALLY getting cited by AI? ...and who's just getting mentioned">
+<meta name="twitter:image" content="https://burnbook-weld.vercel.app/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;700&family=Indie+Flower&family=Gloria+Hallelujah&family=Shadows+Into+Light&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,54 +56,137 @@
   /* Title */
   .title-area {
     text-align: center;
-    padding: 30px 0 10px;
+    padding: 40px 20px 10px;
     position: relative;
   }
 
-  .title-cutout {
-    display: inline-block;
+  /* Ransom-note style letters */
+  .ransom-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    transform: rotate(-1deg);
+  }
+  .ransom-letter {
     font-family: 'Permanent Marker', cursive;
-    font-size: 74px;
+    font-size: 72px;
+    line-height: 1;
+    padding: 4px 8px;
+    display: inline-block;
+  }
+  .ransom-letter.dark {
+    background: #1a1a1a;
     color: #fff;
-    text-shadow: 4px 4px 0 #8b1a4a, -2px -2px 0 #c0325e;
-    letter-spacing: 4px;
-    transform: rotate(-1.5deg);
-    line-height: 1.1;
-    animation: titlePulse 3s ease-in-out infinite;
   }
-
-  @keyframes titlePulse {
-    0%, 100% { transform: rotate(-1.5deg) scale(1); }
-    50% { transform: rotate(-1.5deg) scale(1.015); }
-  }
-
-  .subtitle {
-    font-family: 'Gloria Hallelujah', cursive;
-    color: #fff3;
-    font-size: 18px;
-    margin-top: 6px;
-    transform: rotate(1deg);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-
-  .edition-tag {
-    display: inline-block;
+  .ransom-letter.light {
     background: #fff;
-    color: #c0325e;
+    color: #1a1a1a;
+  }
+  .ransom-letter:nth-child(1) { transform: rotate(-3deg); }
+  .ransom-letter:nth-child(2) { transform: rotate(1deg) translateY(2px); }
+  .ransom-letter:nth-child(3) { transform: rotate(-1deg) translateY(-3px); }
+  .ransom-letter:nth-child(4) { transform: rotate(2deg); }
+  .ransom-letter:nth-child(5) { transform: rotate(-2deg) translateY(4px); font-size: 68px; }
+  .ransom-letter:nth-child(6) { transform: rotate(1deg); }
+  .ransom-letter:nth-child(7) { transform: rotate(-1deg) translateY(-2px); }
+  .ransom-letter:nth-child(8) { transform: rotate(3deg) translateY(3px); }
+
+  .ransom-space {
+    width: 18px;
+  }
+
+  /* AEO EDITION */
+  .edition-title {
     font-family: 'Permanent Marker', cursive;
-    font-size: 14px;
-    padding: 4px 16px;
-    transform: rotate(-2deg);
-    margin-top: 12px;
-    border: 2px solid #8b1a4a;
+    font-size: 62px;
+    color: #e41e31;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin: 10px 0 16px;
+    transform: rotate(0.5deg);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  }
+
+  /* Subtitle strip - lined paper look */
+  .subtitle-strip {
+    background: #fff;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        #cde 27px,
+        #cde 28px
+      );
+    padding: 18px 30px 22px;
+    margin: 0 30px;
+    position: relative;
+    transform: rotate(-0.5deg);
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+  }
+  .subtitle-strip::before,
+  .subtitle-strip::after {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 28px;
+    background: rgba(210, 190, 150, 0.65);
+    z-index: 5;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+  .subtitle-strip::before {
+    top: -12px;
+    left: 30px;
+    transform: rotate(-4deg);
+  }
+  .subtitle-strip::after {
+    top: -10px;
+    right: 40px;
+    transform: rotate(5deg);
+  }
+
+  .subtitle-text {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .subtitle-text .circled {
+    display: inline-block;
+    border: 2.5px solid #c0325e;
+    border-radius: 50%;
+    padding: 0 10px;
+    color: #c0325e;
+    font-weight: 700;
+  }
+  .subtitle-text .line2 {
+    font-size: 26px;
+    color: #555;
+  }
+
+  /* Doodles around title */
+  .doodle {
+    position: absolute;
+    font-family: 'Shadows Into Light', cursive;
+    color: rgba(100, 20, 60, 0.35);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .doodle-emoji {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.3;
   }
 
   .date-scrawl {
     font-family: 'Shadows Into Light', cursive;
     color: rgba(255,255,255,0.4);
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 16px;
     text-align: right;
     padding-right: 20px;
   }
@@ -338,14 +431,38 @@
   <div class="tape tape-2"></div>
   <div class="tape tape-3"></div>
 
-  <span class="heart-trail" style="top:80px; left:20px;">&#x2665; &#x2665;</span>
-  <span class="heart-trail" style="top:200px; right:15px;">&#x2665;</span>
-  <span class="heart-trail" style="bottom:300px; left:30px;">&#x2665; &#x2665; &#x2665;</span>
+  <!-- Doodles around title area -->
+  <span class="doodle" style="top:30px; left:18px; font-size:40px; transform:rotate(-10deg);">&#x1f441;</span>
+  <span class="doodle" style="top:55px; left:15px; font-size:16px; transform:rotate(-5deg);">xoxo</span>
+  <span class="doodle" style="top:30px; left:90px; font-size:14px; transform:rotate(8deg);">fearless</span>
+  <span class="doodle" style="top:22px; right:20px; font-size:36px; transform:rotate(5deg); color:rgba(200,40,60,0.3);">&#x1f48b;</span>
+  <span class="doodle" style="top:65px; right:15px; font-size:13px; transform:rotate(-3deg);">baddie</span>
+  <span class="doodle" style="top:140px; left:10px; font-size:14px; transform:rotate(-8deg);">&#x2728; &#x2728;</span>
+  <span class="doodle" style="top:160px; right:12px; font-size:18px; transform:rotate(12deg);">&#x2665; &#x2665;</span>
+  <span class="doodle" style="bottom:320px; left:14px; font-size:32px; transform:rotate(5deg);">&#x1f441;</span>
+  <span class="doodle" style="bottom:340px; left:12px; font-size:14px; transform:rotate(-3deg);">xoxo</span>
+  <span class="doodle" style="bottom:300px; right:16px; font-size:24px; transform:rotate(-8deg);">&#x2665;</span>
 
   <div class="title-area">
-    <div class="title-cutout">BURN BOOK</div>
-    <div class="subtitle">AI Search Edition</div>
-    <div class="edition-tag">&#x1f48b; AEO Intelligence Report &#x1f48b;</div>
+    <div class="ransom-title">
+      <span class="ransom-letter dark">B</span>
+      <span class="ransom-letter light">U</span>
+      <span class="ransom-letter dark">R</span>
+      <span class="ransom-letter light">N</span>
+      <span class="ransom-space"></span>
+      <span class="ransom-letter dark">B</span>
+      <span class="ransom-letter light">O</span>
+      <span class="ransom-letter dark">O</span>
+      <span class="ransom-letter light">K</span>
+    </div>
+    <div class="edition-title">AEO Edition</div>
+    <div class="subtitle-strip">
+      <div class="subtitle-text">
+        who's <span class="circled">ACTUALLY</span> getting cited by AI?
+        <br>
+        <span class="line2">...and who's just getting mentioned</span>
+      </div>
+    </div>
   </div>
   <div class="date-scrawl">Nov '25 &mdash; Feb '26 data &bull; do NOT let this get out</div>
 
